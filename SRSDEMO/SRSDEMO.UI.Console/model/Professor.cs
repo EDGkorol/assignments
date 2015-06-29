@@ -105,11 +105,23 @@ public class Professor : Person {
   }
 	
   //**************************************
-  //
-  public void AgreeToTeach(Section s) {
-    Teaches.Add(s);
-
-    // We need to link this bidirectionally.
-    s.Instructor = this;
+  //第3题 一位教授不能同时教授两门课程
+  public void AgreeToTeach(Section s)
+  {
+      bool T = false;
+      Course c1 = s.RepresentedCourse;
+      while (c.MoveNext())
+      {
+          Section s2 = (Section)c.Current;
+          Course c2 = s2.RepresentedCourse;
+          if (c1 == c2)
+          {
+              T = true;
+              break;
+          }
+          Teaches.Add(s);
+      }
+      // We need to link this bidirectionally.
+      s.Instructor = this;
   }
 }

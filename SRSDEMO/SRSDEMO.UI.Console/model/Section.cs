@@ -276,7 +276,16 @@ public class Section {
 
     return true;
   }
-	
+  //第6题 修改成绩
+  public void EraseGrade(Student s, string grade)
+  {
+      if (AssignedGrades.ContainsKey(s) == true)
+      {
+          AssignedGrades.Remove(s);
+          TranscriptEntry tr = new TranscriptEntry(s, grade, this);
+          AssignedGrades.Add(s, tr);
+      }
+  }
   //**************************************
   //
   public bool IsSectionOf(Course c) {

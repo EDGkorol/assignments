@@ -76,8 +76,13 @@ public class Course {
 
   //**************************************
   //
-  public void AddPrerequisite(Course c) {
-    Prerequisites.Add(c);
+  public void AddPrerequisite(Course c)
+  {
+      //第2题 一门课程不能把自己设为先修课程
+      if (this.CourseName != c.CourseName)
+      {
+          Prerequisites.Add(c);
+      }
   }
 
   //**************************************
@@ -104,5 +109,10 @@ public class Course {
     OfferedAsSection.Add(s);
 		
     return s;
+  }
+  //第4题 创建CancelSection方法
+  public void CancelSection(Section s)
+  {
+      OfferedAsSection.Remove(s);
   }
 }

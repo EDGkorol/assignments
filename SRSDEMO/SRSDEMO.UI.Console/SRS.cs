@@ -238,6 +238,83 @@ namespace SRSDEMO.UI
             s2.Display();
             Console.WriteLine("");
             s3.Display();
+           
+            //第1题
+            Section se1, se2, se3, se4, se5, se6, se7;
+
+            se1 = c1.ScheduleSection("M", "8:10 - 10:00 PM", "GOVT101", 30);
+            se2 = c1.ScheduleSection("W", "6:10 - 8:00 PM", "GOVT202", 30);
+            se3 = c2.ScheduleSection("Th", "4:10 - 6:00 PM", "GOVT105", 25);
+            se4 = c2.ScheduleSection("Tu", "6:10 - 8:00 PM", "SCI330", 25);
+            se5 = c3.ScheduleSection("M", "6:10 - 8:00 PM", "GOVT101", 20);
+            se6 = c4.ScheduleSection("Th", "4:10 - 6:00 PM", "SCI241", 15);
+            se7 = c5.ScheduleSection("F", "4:10 - 6:00 PM", "ARTS25", 40);
+
+            scheduleOfClasses1.AddSection(se1);
+            scheduleOfClasses1.AddSection(se2);
+            scheduleOfClasses1.AddSection(se3);
+            scheduleOfClasses1.AddSection(se4);
+            scheduleOfClasses1.AddSection(se5);
+            scheduleOfClasses1.AddSection(se6);
+            scheduleOfClasses1.AddSection(se7);
+
+            p2.AgreeToTeach(se1);
+            p3.AgreeToTeach(se2);
+            p1.AgreeToTeach(se3);
+            p3.AgreeToTeach(se4);
+            p2.AgreeToTeach(se5);
+            p1.AgreeToTeach(se6);
+            p2.AgreeToTeach(se7);
+
+            Console.WriteLine("Student registration has begun!");
+            Console.WriteLine("");
+
+            Console.WriteLine("Student " + s1.Name +
+                             " is attempting to enroll in " +
+                             sec1.ToString());
+
+            EnrollFlags status2 = sec1.Enroll(s1);
+
+            ReportStatus(status2);
+
+            Console.WriteLine("Student " + s1.Name +
+                              " is attempting to enroll in " +
+                              se2.ToString());  //sec1和sec2是同一Course的两个Section
+            status = se2.Enroll(s1);
+            ReportStatus(status2);
+
+            Console.WriteLine("Student " + s2.Name +
+                              " is attempting to enroll in " +
+                              se2.ToString());
+            status = se2.Enroll(s2);
+            ReportStatus(status2);
+
+            Console.WriteLine("Student " + s2.Name +
+                              " is attempting to enroll in " +
+                              se3.ToString());
+            status = se3.Enroll(s2);
+            ReportStatus(status2);
+
+            Console.WriteLine("Student " + s2.Name +
+                           " is attempting to enroll in " +
+                           se7.ToString());
+            status = se7.Enroll(s2);
+            ReportStatus(status2);
+
+            Console.WriteLine("Student " + s3.Name +
+                           " is attempting to enroll in " +
+                           se1.ToString());
+            status = se1.Enroll(s3);
+            ReportStatus(status2);
+
+            Console.WriteLine("Student " + s3.Name +
+                           " is attempting to enroll in " +
+                           se5.ToString());
+            status = se5.Enroll(s3);
+            ReportStatus(status2);
+
+            // Skip a line.
+            Console.WriteLine("");
 
             Console.ReadKey();
         }
